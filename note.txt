@@ -1,0 +1,182 @@
+cat /proc/bus/input/devices
+
+
+cd /sys/devices/virtual/misc/uhid/0005:248A:8266.000A/input/input24/
+I: Bus=0005 Vendor=248a Product=8266 Version=0001
+N: Name="Zircon 500 Mouse"
+P: Phys=98:2c:bc:1b:a8:9a
+S: Sysfs=/devices/virtual/misc/uhid/0005:248A:8266.000A/input/input24
+U: Uniq=d1:00:38:40:04:ac
+H: Handlers=mouse2 event21
+B: PROP=0
+B: EV=17
+B: KEY=70000 0 0 0 0
+B: REL=1943
+B: MSC=10
+
+
+
+cd /sys/devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:248A:5B2E.000B/input/input25
+I: Bus=0003 Vendor=248a Product=5b2e Version=0111
+N: Name="XCTECH USB Gaming Mouse"
+P: Phys=usb-0000:00:14.0-2/input0
+S: Sysfs=/devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:248A:5B2E.000B/input/input25
+U: Uniq=
+H: Handlers=mouse3 event22
+B: PROP=0
+B: EV=17
+B: KEY=1f0000 0 0 0 0
+B: REL=1943
+B: MSC=10
+
+
+paź 13 13:11:21 PL006196 kernel: input: Zircon 500 Mouse as /devices/virtual/misc/uhid/0005:248A:8266.0017/input/input46
+paź 13 13:11:21 PL006196 kernel: hid-generic 0005:248A:8266.0017: input,hidraw7: BLUETOOTH HID v0.01 Mouse [Zircon 500] on 98:2c:bc:1b:a8:9a
+paź 13 13:11:22 PL006196 input-remapper-service[1291]: Request to autoload for "Zircon 500 Mouse"
+paź 13 13:11:22 PL006196 (udev-worker)[224154]: mouse2: Process '/bin/input-remapper-control --command autoload --device /dev/input/mouse2' failed with exit code 4.
+paź 13 13:11:22 PL006196 input-remapper-service[1291]: Found "Sleep Button", "AT Translated Set 2 keyboard", "DELL0820:00 044E:121F Mouse", "Plantronics Poly Blackwire 3320 Series", "Intel HID events", "Video Bus", "LiteOn Lenovo Traditional USB Keyboard", "Zircon 500 Mouse"
+
+
+paź 13 13:17:43 PL006196 kernel: usb 1-2: Product: USB Gaming Mouse
+paź 13 13:17:43 PL006196 kernel: input: XCTECH USB Gaming Mouse as /devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.0/0003:248A:5B2E.0018/input/input47
+paź 13 13:17:43 PL006196 kernel: hid-generic 0003:248A:5B2E.0018: input,hidraw8: USB HID v1.11 Mouse [XCTECH USB Gaming Mouse] on usb-0000:00:14.0-2/input0
+paź 13 13:17:43 PL006196 kernel: input: XCTECH USB Gaming Mouse Keyboard as /devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.1/0003:248A:5B2E.0019/input/input48
+paź 13 13:17:43 PL006196 kernel: input: XCTECH USB Gaming Mouse as /devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2:1.1/0003:248A:5B2E.0019/input/input49
+paź 13 13:17:43 PL006196 kernel: hid-generic 0003:248A:5B2E.0019: input,hiddev4,hidraw7: USB HID v1.11 Keyboard [XCTECH USB Gaming Mouse] on usb-0000:00:14.0-2/input1
+paź 13 13:17:43 PL006196 kernel: hid-generic 0003:248A:5B2E.001A: hiddev5,hidraw9: USB HID v1.11 Device [XCTECH USB Gaming Mouse] on usb-0000:00:14.0-2/input2
+paź 13 13:17:44 PL006196 input-remapper-service[1291]: Request to autoload for "XCTECH USB Gaming Mouse"
+paź 13 13:17:44 PL006196 (udev-worker)[232709]: mouse3: Process '/bin/input-remapper-control --command autoload --device /dev/input/mouse3' failed with exit code 4.
+paź 13 13:17:44 PL006196 input-remapper-service[1291]: Found "Sleep Button", "AT Translated Set 2 keyboard", "DELL0820:00 044E:121F Mouse", "Plantronics Poly Blackwire 3320 Series", "Intel HID events", "Video Bus", "LiteOn Lenovo Traditional USB Keyboard", "XCTECH USB Gaming Mouse"
+paź 13 13:17:44 PL006196 input-remapper-service[1291]: Request to autoload for "XCTECH USB Gaming Mouse"
+paź 13 13:17:44 PL006196 systemd-logind[1218]: Watching system buttons on /dev/input/event23 (XCTECH USB Gaming Mouse Keyboard)
+
+
+bluetoothctl
+devices
+info D1:00:38:40:04:AC
+
+Device D1:00:38:40:04:AC (random)
+	Name: Zircon 500
+	Alias: Zircon 500
+	Appearance: 0x03c2 (962)
+	Icon: input-mouse
+	Paired: yes
+	Bonded: yes
+	Trusted: yes
+	Blocked: no
+	Connected: yes
+	LegacyPairing: no
+	UUID: Generic Access Profile    (00001800-0000-1000-8000-00805f9b34fb)
+	UUID: Generic Attribute Profile (00001801-0000-1000-8000-00805f9b34fb)
+	UUID: Device Information        (0000180a-0000-1000-8000-00805f9b34fb)
+	UUID: Battery Service           (0000180f-0000-1000-8000-00805f9b34fb)
+	UUID: Human Interface Device    (00001812-0000-1000-8000-00805f9b34fb)
+	UUID: Vendor specific           (00010203-0405-0607-0809-0a0b0c0d1912)
+	Modalias: usb:v248Ap8266d0001
+	Battery Percentage: 0x64 (100)
+
+	sudo nano /etc/udev/rules.d/99-hid-generic.rules
+	ACTION=="add", SUBSYSTEM=="hid", ATTRS{idVendor}=="248a", ATTRS{idProduct}=="8266", RUN+="/bin/sh -c 'modprobe -r hid-generic'"
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+
+
+
+
+xinput get-button-map <id>
+xinput set-button-map <device_id> <mapowanie_przycisków> //xinput set-button-map 10 1 2 3 4 5 8 9 6 7
+
+
+// na kablu /dev/input/event18:	XCTECH USB Gaming Mouse
+Event: time 1729837770.958889, -------------- SYN_REPORT ------------
+Event: time 1729837772.358927, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90005
+Event: time 1729837772.358927, type 1 (EV_KEY), code 276 (BTN_EXTRA), value 1
+Event: time 1729837772.358927, -------------- SYN_REPORT ------------
+Event: time 1729837772.506936, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90005
+Event: time 1729837772.506936, type 1 (EV_KEY), code 276 (BTN_EXTRA), value 0
+Event: time 1729837772.506936, -------------- SYN_REPORT ------------
+Event: time 1729837772.974922, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90004
+Event: time 1729837772.974922, type 1 (EV_KEY), code 275 (BTN_SIDE), value 1
+Event: time 1729837772.974922, -------------- SYN_REPORT ------------
+Event: time 1729837773.102900, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90004
+Event: time 1729837773.102900, type 1 (EV_KEY), code 275 (BTN_SIDE), value 0
+Event: time 1729837773.102900, -------------- SYN_REPORT ------------
+// na bt
+Event: time 1729837847.222125, -------------- SYN_REPORT ------------
+Event: time 1729837848.999247, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1729837848.999247, type 1 (EV_KEY), code 272 (BTN_LEFT), value 1
+Event: time 1729837848.999247, -------------- SYN_REPORT ------------
+Event: time 1729837849.111003, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1729837849.111003, type 1 (EV_KEY), code 272 (BTN_LEFT), value 0
+Event: time 1729837849.111003, -------------- SYN_REPORT ------------
+Event: time 1729837850.026199, type 1 (EV_KEY), code 276 (BTN_EXTRA), value 1
+Event: time 1729837850.026199, -------------- SYN_REPORT ------------
+Event: time 1729837850.214126, type 1 (EV_KEY), code 276 (BTN_EXTRA), value 0
+Event: time 1729837850.214126, -------------- SYN_REPORT ------------
+Event: time 1729837850.926247, type 1 (EV_KEY), code 279 (BTN_TASK), value 1
+Event: time 1729837850.926247, -------------- SYN_REPORT ------------
+Event: time 1729837851.129216, type 1 (EV_KEY), code 279 (BTN_TASK), value 0
+Event: time 1729837851.129216, -------------- SYN_REPORT ------------
+
+
+xinput get-button-map 24
+1 2 3 4 5 6 7 8 9
+
+xinput list-props 24
+Device 'XCTECH USB Gaming Mouse':
+	Device Enabled (203):	1
+	Coordinate Transformation Matrix (205):	1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000
+	libinput Natural Scrolling Enabled (334):	0
+	libinput Natural Scrolling Enabled Default (335):	0
+	libinput Scroll Methods Available (336):	0, 0, 1
+	libinput Scroll Method Enabled (337):	0, 0, 0
+	libinput Scroll Method Enabled Default (338):	0, 0, 0
+	libinput Button Scrolling Button (339):	2
+	libinput Button Scrolling Button Default (340):	2
+	libinput Button Scrolling Button Lock Enabled (341):	0
+	libinput Button Scrolling Button Lock Enabled Default (342):	0
+	libinput Middle Emulation Enabled (343):	0
+	libinput Middle Emulation Enabled Default (344):	0
+	libinput Rotation Angle (317):	0.000000
+	libinput Rotation Angle Default (318):	0.000000
+	libinput Accel Speed (345):	0.000000
+	libinput Accel Speed Default (346):	0.000000
+	libinput Accel Profiles Available (347):	1, 1, 1
+	libinput Accel Profile Enabled (348):	1, 0
+	libinput Accel Profile Enabled Default (349):	1, 0, 0
+	libinput Accel Custom Fallback Points (350):	<no items>
+	libinput Accel Custom Fallback Step (351):	0.000000
+	libinput Accel Custom Motion Points (352):	<no items>
+	libinput Accel Custom Motion Step (353):	0.000000
+	libinput Accel Custom Scroll Points (354):	<no items>
+	libinput Accel Custom Scroll Step (355):	0.000000
+	libinput Left Handed Enabled (356):	0
+	libinput Left Handed Enabled Default (357):	0
+	libinput Send Events Modes Available (319):	1, 0
+	libinput Send Events Mode Enabled (320):	0, 0
+	libinput Send Events Mode Enabled Default (321):	0, 0
+	Device Node (322):	"/dev/input/event18"
+	Device Product ID (323):	9354, 23342
+	libinput Drag Lock Buttons (358):	<no items>
+	libinput Horizontal Scroll Enabled (359):	1
+	libinput Scrolling Pixel Distance (360):	15
+	libinput Scrolling Pixel Distance Default (361):	15
+	libinput High Resolution Wheel Scroll Enabled (362):	1
+
+
+	sudo cp GenesisZircon_HID_driver.ko /lib/modules/$(uname -r)/extra/
+	Jeśli katalog extra nie istnieje, możesz go utworzyć:
+	sudo mkdir -p /lib/modules/$(uname -r)/extra/
+
+	Po skopiowaniu modułu do katalogu z modułami należy zaktualizować informacje o dostępnych modułach jądra:
+	sudo depmod -a
+
+	sudo nano /etc/modules-load.d/GenesisZircon_HID_driver.conf
+	W pliku wpisz nazwę modułu, czyli np.:
+	GenesisZircon_HID_driver
+
+   //obsolete
+	sudo nano /etc/modules
+	Dodaj nazwę swojego modułu:
+	GenesisZircon_HID_driver
